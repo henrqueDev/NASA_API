@@ -18,7 +18,7 @@ cursorSatelite.execute("""
 
 def inserirNovoLog(log):
     
-    newLog = cursorSatelite.execute(f"""
+    cursorSatelite.execute("""
                                     
                                     INSERT INTO SateliteLog(DATAHORA,LATITUDE,LONGITUDE) values (?,?,?)
                                     
@@ -26,5 +26,5 @@ def inserirNovoLog(log):
                                     """,
                                     (log.datahora,log.lat,log.lng)
     )
-    
+    conectarDB_Satelite.commit()
     return
