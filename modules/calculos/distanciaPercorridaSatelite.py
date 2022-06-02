@@ -1,6 +1,5 @@
 import math
 import mpmath
-import sqlite3
 
 def obterVariacaoLatLng(a,b):
     deltaA = a
@@ -23,8 +22,6 @@ def calcularDistanciaPercorrida(lat1,lat2,lng1,lng2):
     distanciaPercorrida = RaioTerra * lx2
     
     return distanciaPercorrida
-
-
 
 
 
