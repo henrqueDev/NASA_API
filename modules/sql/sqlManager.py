@@ -36,3 +36,5 @@ def inserirNovoLog(log):
         
     conectarDB_Satelite.commit()
     return
+
+
