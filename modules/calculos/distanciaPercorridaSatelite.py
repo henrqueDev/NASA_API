@@ -12,6 +12,7 @@ def __obterVariacaoLatLng(a,b):
     if(variacao < 0):
         variacao = (deltaA - deltaB) * -1
     return variacao
+
 def calcularDistanciaPercorrida(lat1,lat2,lng1,lng2):
     lx1 = (((math.sin(__obterVariacaoLatLng(lat1,lat2))/2)**2) + math.cos(lat1)) * math.cos(lat2) * ((math.sin(__obterVariacaoLatLng(lng1,lng2)/2)) ** 2)
     try :
