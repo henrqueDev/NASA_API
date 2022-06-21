@@ -1,8 +1,10 @@
 import json
 from flask import Flask
-import sqlite3
+from flask_cors import CORS
 import requests
 app = Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 @app.route("/")
 def index():

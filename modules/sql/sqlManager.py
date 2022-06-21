@@ -1,4 +1,6 @@
 import sqlite3
+import json
+import requests
 from log.Log import Log
 from calculos.distanciaPercorridaSatelite import calcularDistanciaPercorrida
 conectarDB_Satelite = sqlite3.connect("SateliteISS.db")
@@ -11,6 +13,7 @@ cursorSatelite.execute("""
                            DATAHORA: DATETIME NOT NULL
                            LATITUDE: REAL NOT NULL,
                            LONGITUDE: REAL NOT NULL,
+                           ALTITUDE: REAL NOT NULL
                            
                        )
                        """)
@@ -37,4 +40,13 @@ def inserirNovoLog(log):
     conectarDB_Satelite.commit()
     return
 
+
+def reqLoop():
+    while True:
+        try:
+            res =  requests.get("https://api.wheretheiss.at/v1/satellites/25544")
+            obj = json.loads(res.text)
+            
+        except requests.exceptions.RequestException as e:
+            raise SystemExit(e)
 
