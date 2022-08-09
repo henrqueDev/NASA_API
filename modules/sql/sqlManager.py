@@ -7,14 +7,12 @@ conectarDB_Satelite = sqlite3.connect("SateliteISS.db")
 
 cursorSatelite = conectarDB_Satelite.cursor()
 
-cursorSatelite.execute("""
-                       CREATE TABLE IF NOT EXISTS SateliteLog(
-                           ID: INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-                           DATAHORA: DATETIME NOT NULL
-                           LATITUDE: REAL NOT NULL,
-                           LONGITUDE: REAL NOT NULL,
-                           ALTITUDE: REAL NOT NULL
-                           
+cursorSatelite.execute(""" CREATE TABLE IF NOT EXISTS SateliteLog(
+                           ID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+                           DATAHORA DATETIME NOT NULL,
+                           LATITUDE REAL NOT NULL,
+                           LONGITUDE REAL NOT NULL,
+                           ALTITUDE REAL NOT NULL
                        )
                        """)
 
@@ -30,13 +28,12 @@ def inserirNovoLog(log):
     new_log = Log(log.dataHora,log.lat,log.long,distPercorrida)
     cursorSatelite.execute("""
                                     
-                                    INSERT INTO SateliteLog(DATAHORA,LATITUDE,LONGITUDE) values (?,?,?);
+                                    INSERT INTO SateliteLog(DATAHORA,LATITUDE,LONGITUDE,ALTITUDE) values (?,?,?);
                                     
                                     
                                     """,
-                                    (new_log.datahora,new_log.lat,new_log.lng,new_log.distanciaPercorrida)
-    )
-        
+                                    (new_log.dataHora, new_log.lat, new_log.lng)
+    )   
     conectarDB_Satelite.commit()
     return
 

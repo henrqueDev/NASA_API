@@ -1,7 +1,7 @@
 class Log:
     def __init__(self,lat,long,dataHora, distanciaPercorrida):
         self.__lat = lat
-        self.__long = long
+        self.__lng = long
         self.__dataHora = dataHora
         self.__distanciaPercorrida = distanciaPercorrida
         
@@ -10,8 +10,8 @@ class Log:
         return self.__lat
     
     @property
-    def long(self):
-        return self.__long
+    def lng(self):
+        return self.__lng
     
     @property
     def dataHora(self):
